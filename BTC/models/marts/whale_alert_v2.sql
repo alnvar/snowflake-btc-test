@@ -12,9 +12,9 @@ WITH WHALES as (
     order by total_sent desc
 )
 select
+    CAST('{{ invocation_id }}' as string) as invocation_id,
     w.output_address,
     w.total_sent,
-    w.tx_count,
-    {{ convert_to_usd('w.total_sent') }} as total_sent_usd
+    w.tx_count
 from WHALES w
 order by total_sent desc
